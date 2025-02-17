@@ -421,6 +421,14 @@ body {
         align-items: center;
     }
 
+    .card--back-side * {
+        pointer-events: none;
+    }
+
+    .card--front-side * {
+        pointer-events: none;
+    }
+
     .card--back-side {
         transform: rotateY(180deg);
     }

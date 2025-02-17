@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="de" class>
+    <head>
+        <title>Bolusrechner</title>
+        <meta charset="UTF-8" />
+        <meta name="description" content="Unser Bolusrechner ist das ultimative Online-Tool für Menschen mit Diabetes, um den Insulinbedarf präzise zu berechnen. Individuell anpassbar an Faktoren wie KE-Faktoren, Tageszeiten und Blutzuckerziele, hilft der Rechner, Ihre Insulindosis einfach und zuverlässig zu bestimmen. Zusätzlich bietet unsere Plattform eine umfangreiche Nährwertdatenbank, mit der Sie Kohlenhydrate, Kalorien und weitere Nährwerte von Lebensmitteln schnell analysieren können. Funktionen wie die Speicherung persönlicher Daten und Anpassungen machen die Verwaltung Ihres Diabetes einfacher und effizienter. Perfekt für Typ-1- und Typ-2-Diabetes geeignet. Optimieren Sie Ihr Diabetes-Management noch heute – mit unserem benutzerfreundlichen, flexiblen und modernen Bolusrechner!" />
+        <meta name="keywords" content="Bolusrechner, Insulinbedarf berechnen, Diabetes Rechner, Insulinberechnung, Diabetes Management, Nährwertanalyse, Kohlenhydrate berechnen, Typ-1-Diabetes, Typ-2-Diabetes, Blutzucker Rechner, Diabetiker Tools, Ernährung bei Diabetes, KE-Faktor Berechnung, Diabetiker App, Diabetes Online-Tools, Insulin Dosis berechnen, Blutzuckerziele, Diabetes Plattform, Nährwertdatenbank, Kohlenhydrate und Insulin, Insulinrechner" />
+        <meta name="author" content="Bela Varga" />
+        <meta name="copyright" content="Web By Bela Varga" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/style/reset.css" />
+        <link rel="stylesheet" href="/style/style.css" />
+        <script src="/scripts/modules/menu.js" defer></script>
+        <script src="/scripts/modules/settingsSection.js" defer></script>
+        <script src="/scripts/modules/validationInsulin.js" defer></script>
+        <script src="/scripts/modules/insulinDataUI.js" defer></script>
+        <style type="text/css">
+
+            html {
+                scroll-behavior: smooth;
+            }
+
+            body {
+                background-color: #AA0E2D;
+            }
+
+           /* * {
+                border: lightgreen 0.2px dashed;
+            }*/
+
+           .settings a {
+                text-decoration: none;
+                color: whitesmoke;
+            }
+
+            .settings {
+                padding: 32px 0;
+            }
+
+            .head {
+                display: flex;
+                align-items: flex-start;
+                justify-content: center;
+                flex-direction: column;
+            }
+
+            .motivation {
+                padding: 6px;
+                margin: 4px 12px;
+                border-radius: 8px;
+                background-color: rgb(0,0,0, 8%);
+            }
+
+            .settings__heading {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                background-color: transparent;
+                gap: 12px;
+                padding: 8px;
+            }
+
+            .settings__heading h1 {
+                margin: 0;
+            }
+
+            .settings ul {
+                width: 100%;
+                list-style-type: none;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                row-gap: 8px;
+            }
+
+            .settings-box a {
+                width: 96%;
+                padding: 8px;
+                border-radius: 8px;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 18px;
+                color: whitesmoke;
+                font-weight: bold;
+            }
+
+            .settings-box li {
+                width: 100%;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 18px;
+                padding: 8px;
+            }
+
+            .settings-box lh {
+                width: 96%;
+                padding: 8px;
+                border-radius: 8px;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 18px;
+                color: whitesmoke;
+            }
+
+            .settings a:hover {
+                background-color: rgba(0, 0, 0, 0.3);
+            }
+
+
+            .settings__links__list {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .settings__insulin-settings {
+                display: flex; 
+                justify-content: center; 
+                align-items: center; 
+                flex-direction: column; 
+                row-gap: 28px; 
+                padding: 12px 0;
+            }
+
+            .settings__insulin-settings_general {
+                padding: 12px;
+                width: 90%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                row-gap: 20px;
+                background-color: white;
+                color: black;
+                border-radius: 20px;
+                overflow: hidden;
+            }
+
+            .input-group {
+                display: flex;
+                flex-direction: column;
+                row-gap: 6px;
+                width: 100%;
+                padding: 8px 0;
+            }
+
+            .input-group input {
+                border: none;
+                border-bottom: solid 0.9px black;
+                font-size: 2rem;
+                font-weight: bold;
+                padding: 4px 8px;
+                text-align: center;
+                width: 50%;
+                align-self: center;
+                outline: none;
+            }
+
+            input:-webkit-autofill {
+                background-color: transparent !important;
+                box-shadow: 0 0 0px 1000px white inset !important;
+                -webkit-text-fill-color: black !important;
+            }
+
+            .input-group label {
+                font-weight: bold;
+                align-self: center;
+            }
+
+            .hidden {
+                display: none;
+            }
+
+            .button {
+                font-weight: bolder;
+                padding: 8px;
+                border-radius: 12px;
+                font-size: 1rem;
+                background-color: #AA0E2D;
+                color: white;
+                border: 0.4px solid black;
+                overflow: hidden;
+            }
+
+            /*Overflow*/
+            .navigation-bar__grid {
+                overflow: hidden;
+            }
+
+            .settings {
+                margin-top: 60px;
+                overflow: hidden;
+            }
+
+            /*Fehlermeldung*/
+            .error-box--breakfast, .error-box--lunch, .error-box--dinner, .error-box--night {
+                background-color: rgb(229, 192, 192);
+                color: var(--main-background-color);
+                font-weight: bold;
+                padding: 16px 8px;
+                border-radius: 12px;
+                margin-bottom: 8px;
+                display: none;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .data-saved--breakfast, .data-saved--lunch, .data-saved--dinner, .data-saved--night {
+                background-color: rgb(207, 229, 192);
+                color: green;
+                font-weight: bold;
+                padding: 16px 8px;
+                border-radius: 12px;
+                margin-bottom: 8px;
+                display: none;
+                align-items: center;
+                justify-content: center;
+            }
+
+
+        </style>
+    </head>
+<body class>
+    <header class>
+        <div class="navigation-bar__grid">
+            <div class="navigation-bar__logo">
+                <a href="/">
+                    <img src="/assets/images/WBB.svg" width="40" height="40">
+                </a>
+            </div>
+            <div class="navigation-bar__login-button--is-close register-button" id="register-button">
+                <a href="/auth/register">Registrieren</a>
+            </div>
+            <div class="navigation-bar__hamburger-menu">
+                <img class="navigation-bar__hamburger-menu--icon" id="hamburger-menu" src="/assets/images/icons/menu_24dp_000000_FILL1_wght700_GRAD200_opsz24.svg" alt="Navigations-Icon" />
+            </div>
+            </div>
+             <!--Versteckte Navigations-Bar-->
+             <nav class="navigation-bar__menu--is-close" id="navbar">
+                <div class="navigation-bar__menu__list">
+                    <ul>
+                        <a href="/">
+                            <li>
+                                <div class="navigation-bar__menu__navigation-link">
+                                    <img src="/assets/images/icons/info_24dp_000000_FILL1_wght700_GRAD200_opsz24.svg" alt="Navigation zur Startseite"/>
+                                    Home
+                                </div>
+                            </li>
+                        </a>
+                        <a href="/settings">
+                            <li>
+                                <div class="navigation-bar__menu__navigation-link">
+                                    <img src="/assets/images/icons/settings_heart_24dp_000000_FILL1_wght700_GRAD200_opsz24.svg" alt="Navigation zu den Einstellungen"/>
+                                    Einstellungen
+                                </div>
+                            </li>
+                        </a>
+                    </ul>
+                </div>
+                
+                <div class="auth-group">
+                    <div class="navigation-bar__menu__register-button auth-button">
+                        Registrieren
+                    </div>
+                    <div class="navigation-bar__menu__login-button auth-button">
+                        Anmelden
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="settings">
+            <div class="head">
+                <div class="settings__heading settings-box">
+                    <img class="settings__heading__img" src="../assets/images/icons/calculate_24dp_000000_FILL1_wght700_GRAD200_opsz24.svg" alt="User Name" size="48" height="48" width="48"/>
+                    <div class="settings__heading__profile-name">
+                        <h1>Your Personal Account</h1> <!--User Profile-->
+                        <span style="color: grey;">Your personal account</span>
+                    </div>
+                </div>
+                <div class="motivation">
+                    Bring a smile!
+                </div>
+            </div>
+            <div class="settings__links settings-box">
+                <nav class="settings__links__list">
+                    <ul>
+                        <lh>
+                            <span>Account Settings</span>
+                        </lh>
+                        <li >
+                            <a style="background-color: rgb(0, 0, 0, 6%);" href="#data-settings" >
+                            <img src="../assets/images/icons/toggle_off_24dp_000000_FILL1_wght700_GRAD200_opsz24.svg" />
+                            <span>Edit Data</span>
+                        </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <!--Messwerte ändern-->
+            <div class="settings__insulin-settings settings-section hidden" id="data-settings" >
+                <!--Frühstück-->
+                <div class="settings__insulin-settings_breakfest settings__insulin-settings_general">
+                    <h2>Frühstück</h2>
+                    <div class="error-box--breakfast"></div>
+                    <div class="data-saved--breakfast"></div>
+                    <div class="input-group">
+                        <label for="targetBloodSugar-breakfast">
+                            Zielblutzucker
+                        </label>
+                        <input type="number" id="targetBloodSugar-breakfast" min="0"/>
+                    </div>
+                    <div class="input-group">
+                        <label for="carbFactor-breakfast">
+                            KE-Faktor
+                        </label>
+                        <input type="number" id="carbFactor-breakfast" min="0"/>
+                    </div>
+                    <div class="input-group">
+                        <label for="correctionFactor-breakfast">
+                            Korrektur-Faktor
+                        </label>
+                        <input type="number" id="correctionFactor-breakfast" min="0"/>
+                    </div>
+                    <button type="submit" id="save-breakfast" class="button">Speichern</button>
+                </div>
+                <!--Mittagessen-->
+                <div class="settings__insulin-settings_lunch settings__insulin-settings_general">
+                    <h2>Mittagessen</h2>
+                    <div class="error-box--lunch"></div>
+                    <div class="data-saved--lunch"></div>
+                    <div class="input-group">
+                        <label for="targetBloodSugar-lunch">
+                            Zielblutzucker
+                        </label>
+                        <input type="number" id="targetBloodSugar-lunch" min="0"/>
+                    </div>
+                    <div class="input-group">
+                        <label for="carbFactor-lunch">
+                            KE-Faktor
+                        </label>
+                        <input type="number" id="carbFactor-lunch" min="0"/>
+                    </div>
+                    <div class="input-group">
+                        <label for="correctionFactor-lunch">
+                            Korrektur-Faktor
+                        </label>
+                        <input type="number" id="correctionFactor-lunch" min="0"/>
+                    </div>
+                    <button type="submit" id="save-lunch" class="button">Speichern</button>
+                </div>
+            
+            <!--Abendessen-->
+            <div class="settings__insulin-settings_dinner settings__insulin-settings_general">
+                <h2>Abendessen</h2>
+                <div class="error-box--dinner"></div>
+                <div class="data-saved--dinner"></div>
+                <div class="input-group">
+                    <label for="targetBloodSugar-dinner" >
+                        Zielblutzucker
+                    </label>
+                    <input type="number" id="targetBloodSugar-dinner" min="0"/>
+                </div>
+                <div class="input-group">
+                    <label for="carbFactor-dinner">
+                        KE-Faktor
+                    </label>
+                    <input type="number" id="carbFactor-dinner" min="0"/>
+                </div>
+                <div class="input-group">
+                    <label for="correctionFactor-dinner">
+                        Korrektur-Faktor
+                    </label>
+                    <input type="number" id="correctionFactor-dinner" min="0"/>
+                </div>
+                <button type="submit" id="save-dinner" class="button">Speichern</button>
+            </div>
+            <!--Nachts-->
+            <div class="settings__insulin-settings_night settings__insulin-settings_general">
+                <h2>Nachts</h2>
+                <div class="error-box--night"></div>
+                <div class="data-saved--night"></div>
+                <div class="input-group">
+                    <label for="targetBloodSugar-night" >
+                        Zielblutzucker
+                    </label> 
+                    <input type="number" id="targetBloodSugar-night" min="0"/>
+                </div>
+                <div class="input-group">
+                    <label for="carbFactor-night">
+                        KE-Faktor
+                    </label>
+                    <input type="number" id="carbFactor-night" min="0"/>
+                </div>
+                <div class="input-group">
+                    <label for="correctionFactor-night">
+                        Korrektur-Faktor
+                    </label>
+                    <input type="number" id="correctionFactor-night" min="0"/>
+                </div>
+                <button type="submit" id="save-night" class="button">Speichern</button>
+            </div>
+        </div>
+        </div>
+    </main>
+    <footer>
+
+    </footer>
+</body>
+</html>

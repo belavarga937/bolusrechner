@@ -1,0 +1,555 @@
+@import url(../assets/fonts/fonts.css);
+
+/*Debbuging
+* {
+    border: dashed 0.2px lightgreen;
+    scroll-behavior: smooth;
+}
+
+div {
+    border: dashed 1px red;
+}
+*/
+
+:root {
+    --header-font-family: 'Libre Baskerville', serif;
+    --text-font-family: 'Frank Ruhl Libre', serif;
+    --main-background-color: #AA0E2D;
+    --side-background-color: #E2123C;
+    --mark-font-color: #ffde59;
+    --button-background-color: #F0F0F0;
+    --link-font-color: #F5F5F5;
+    --text-font-color: #EBEBEB;
+}
+
+html {
+    background-color: var(--main-background-color);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    color: var(--link-font-color);
+}
+
+.heading {
+    font-family: var(--header-font-family);
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px), (orientation: landscape) {
+    [class*="col-"] {
+        width: 100%;
+    }
+
+    html {
+        overflow: scroll;
+    }
+
+/*Navigationsbereich*/
+    header {
+        background-color: var(--main-background-color);
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .navigation-bar__grid {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 60px;
+        padding: 0 18px;
+        border-bottom: 0.9px solid #D9D9D9;
+        transition: border-bottom 1s ease-in-out;
+        position: fixed;
+        z-index: 5;
+        top: 0;
+        width: 100%;
+        background-color: #AA0E2D;
+        column-gap: 12px;
+    }
+    
+    .navigation-bar__grid * {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+    }
+
+    .navigation-bar__logo {
+        width: 50%;
+        padding: 8px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+/*Dieser Abschnitt beinhaltet das Styling des Login Button*/
+    .register-button {
+        justify-self: flex-end;
+        transition:  visibility 1s ease-in-out, opacity 1s ease-in-out; 
+    }
+
+    .register-button a {
+        padding: 8px 12px;
+        background-color:whitesmoke;
+        color: var(--main-background-color);
+        border-radius: 22px;
+        font-weight: bolder;
+    }
+
+    .register-button a:hover {
+        background-color: rgba(255, 160, 160, 0.982);
+    }
+    
+    .navigation-bar__login-button--is_close {
+        visibility: visible;
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+/*Dieser Abschnitt beinhaltet das Styling des Hamburger Menu*/
+    .navigation-bar__hamburger-menu {
+        justify-content: flex-end;
+        padding: 0;
+        width: fit-content;
+        justify-self: flex-end;
+    }
+    
+    .navigation-bar__hamburger-menu--icon {
+        color: var(--button-background-color);
+        padding: 8px;
+        border-radius: 100%;
+        background-color: rgba(255, 160, 160, 0.982);
+    }
+
+    #navbar {
+        width: 100%;
+        height: calc(100vh - 60px);
+        position: fixed;
+        top: 60px;
+        left: 0;
+        z-index: 1;
+        background-color: var(--button-background-color);
+        transition: transform 0.3s ease-in-out, visibility 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        display: flex;
+        flex-direction: column;
+        row-gap: 100px;
+        overflow: scroll;
+        overflow: hidden;
+    }
+
+    .navigation-bar__menu__list {
+        padding: 16px;
+    }
+
+    #navbar ul {
+        list-style-type: none;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        row-gap: 4px;
+        width: 100%;
+    }
+
+    a {
+        margin: 0;
+    }
+
+    .navigation-bar__menu__navigation-link {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 8px;
+        font-weight: bolder;
+        padding: 8px;
+    }
+
+    .auth-group {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column-reverse;
+        row-gap: 8px;
+        padding: 8px;
+        align-self: center;
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+    }
+
+    @media only screen and (orientation: landscape) {
+        .auth-group {
+            flex-direction: row;
+            column-gap: 4px;
+        }
+    }
+
+    .auth-button {
+        padding: 8px;
+        border-radius: 6px;
+        width: 96%;
+        text-align: center;
+        font-weight: bolder;
+        justify-self: flex-end;
+        overflow: hidden;
+    }
+
+    .navigation-bar__menu__register-button {
+        background-color: var(--main-background-color);
+        color: white;
+    }
+
+    .navigation-bar__menu__login-button {
+        background-color: white;
+        border: solid black 0.5px;
+    }
+
+    .navigation-bar__menu--is-close {
+        visibility: hidden;
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+
+    /*Anpassung der Container, bei Öffnen des Hamburger-Menüs*/
+    .nav--no-scroll {
+        height: 100%;
+        overflow-y: hidden;
+        color: black;
+    }
+
+    .header--is-close {
+        background-color: var(--button-background-color);
+        border-bottom: 4px solid var(--main-background-color);
+        overflow: hidden;
+    }
+
+    .navigation-bar__login-button--is-open {
+        visibility: hidden;
+        opacity: 0;
+        transform: translateX(500px);
+    }
+
+    .navigation-bar__menu--is-open {
+        visibility: visible;
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    /*Stylen des Submenüs*/
+    .bolusrechner-sub-menu {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 0 8px 32px 8px;
+        color: black;
+        margin-top: 60px;
+    }
+
+    .bolusrechner-sub-menu__heading {
+        text-align: center;
+    }
+
+    .bolusrechner-sub-menu__heading {
+        color: var(--link-font-color);
+        white-space: wrap;
+    }
+
+    .bolusrechner-sub-menu__sub-navigation-bar {
+        width: 100%;
+        height: fit-content;
+        padding: 8px 16px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        column-gap: 8px;
+        white-space: nowrap;
+        border-radius: 8px;
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
+        background-image: url(/assets/images/background/sub-menu-background.svg);
+        background-size: contain;
+        background-repeat: repeat;
+        background-color: whitesmoke;
+        overflow: scroll;
+        scrollbar-width: none;
+    }
+
+    @media only screen and (min-width: 600px) {
+        .bolusrechner-sub-menu__sub-navigation-bar {
+            justify-content: space-between;
+        }
+    }
+
+    .bolusrechner-sub-menu__sub-navigation-bar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .bolusrechner-sub-menu__sub-navigation-bar__nav-item {
+        width: fit-content;
+        height: fit-content;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: var(--text-font-color);
+        font-weight: 900;
+    }
+
+    .bolusrechner-sub-menu__sub-navigation-bar__nav-item img {
+        width: 60px;
+        align-self: center;
+        margin: 0;
+        padding: 0;
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .bolusrechner-sub-menu__sub-navigation-bar__nav-item span {
+        visibility: hidden;
+        display: none;
+    }
+/*
+    .button-breakfast {
+        background-image: url(/assets/images/meals/4.svg);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .button-lunch {
+        background-image: url(/assets/images/meals/5.svg);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .button-dinner {
+        background-image: url(/assets/images/meals/6.svg);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .button-night {
+        background-image: url(/assets/images/meals/7.svg);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+*/
+    .nav-item-icon {
+        padding: 8px;
+        border-radius: 12px;
+        background-color: transparent;
+    }
+
+    .error_no_login {
+        background-color: rgb(229, 192, 192);
+        color: var(--main-background-color);
+        font-weight: bold;
+        padding: 16px 8px;
+        border-radius: 12px;
+        margin-bottom: 8px;
+        display: none;
+        align-items: center;
+        justify-content: center;
+    }
+
+/*Main-Content*/
+    main {
+        background-color: var(--main-background-color);
+        overflow: hidden;
+    }
+/*Styling des Bolusrechner*/
+    .bolusrechner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 12px;
+    }
+
+    .bolusrechner__header {
+        text-align: center;
+        border-bottom: solid 1px black;
+    }
+
+    .bolusrechner__header h2 {
+        margin: 16px;
+    }
+
+    .bolusrechner__sub-header-selecting-time {
+        margin: 16px 0 8px 0;
+        text-align: center;
+    }
+
+
+/*Animation für Drehung der Datenspeicherung*/
+    .bolusrechner__selecting-data {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    .bolusrechner__selecting-data-button {
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        perspective: 1000px;
+        width: 100px;
+        height: 38px;
+    }
+
+    .card--front-side, .card--back-side{
+        backface-visibility: hidden;
+        padding: 6px;
+        font-family: var(--header-font-family);
+        border-radius: 8px;
+        font-size: calc(1rem * 0.75);
+        transition: transform 0.8s ease-in-out;
+        position: absolute;
+        background-color: var(--button-background-color);
+        width: 100px;
+        color: black;
+        font-weight: bolder;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card--back-side {
+        transform: rotateY(180deg);
+    }
+
+    .bolusrechner__selecting-data-button:hover .card--front-side {
+        transform: rotateY(180deg);
+    }
+
+    .bolusrechner__selecting-data-button:hover .card--back-side {
+        transform: rotateY(0deg);
+    }
+
+    /*Styling der Eingabeform des Bolusrechners*/
+    .bolusrechner__input-form {
+        margin: 32px 0;
+        padding: 32px 0;
+        display: grid;
+        grid-template-rows: auto;
+        gap: 32px;
+        width: 95%;
+        background-color: whitesmoke;
+        color: black;
+        font-family: var(--text-font-family);
+        font-size: 16px;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    
+
+    .bolusrechner__input-form-section {
+        width: 100%;
+        max-width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .bolusrechner__input-form-input-group {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 95%;
+        max-width: 95%;
+        row-gap: 8px;
+    }
+
+    .bolusrechner__input-form-input-group input {
+        width: 100%;
+        border-radius: 8px;
+        border: 0.5px solid;
+        padding: 12px;
+        font-size: 16px;
+        font-weight: 900;
+        font-family: var(--header-font-family);
+    }
+
+    .bolusrechner__input-form-input-group label {
+        align-self: flex-start;
+        font-weight: 900;
+    }
+
+    .bolusrechner__input-form-showing-result {
+        width: 95%;
+        padding: 16px 4px;
+        border-radius: 8px;
+        border: solid 0.2px var(--main-background-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: var(--text-font-family);
+        color: var(--main-background-color);
+        text-align: center;
+    }
+
+    .bolusrechner__input-form-save-button {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        padding: 8px 16px;
+        border-radius: 12px;
+        background-color: var(--text-font-color);
+        font-family: var(--text-font-family);
+        font-weight: 900;
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .col-s-1 {width: 8.33%;}
+    .col-s-2 {width: 16.66%;}
+    .col-s-3 {width: 25%;}
+    .col-s-4 {width: 33.33%;}
+    .col-s-5 {width: 41.66%;}
+    .col-s-6 {width: 50%;}
+    .col-s-7 {width: 58.33%;}
+    .col-s-8 {width: 66.66%;}
+    .col-s-9 {width: 75%;}
+    .col-s-10 {width: 83.33%;}
+    .col-s-11 {width: 91.66%;}
+    .col-s-12 {width: 100%;}
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .col-1 {width: 8.33%;}
+    .col-2 {width: 16.66%;}
+    .col-3 {width: 25%;}
+    .col-4 {width: 33.33%;}
+    .col-5 {width: 41.66%;}
+    .col-6 {width: 50%;}
+    .col-7 {width: 58.33%;}
+    .col-8 {width: 66.66%;}
+    .col-9 {width: 75%;}
+    .col-10 {width: 83.33%;}
+    .col-11 {width: 91.66%;}
+    .col-12 {width: 100%;}
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+}

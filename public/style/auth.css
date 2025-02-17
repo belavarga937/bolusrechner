@@ -1,0 +1,287 @@
+/*Hier findet das Styling der Authentifizierung statt*/
+@import url(../assets/fonts/fonts.css);
+
+:root {
+    --header-font-family: 'Libre Baskerville', serif;
+    --text-font-family: 'Frank Ruhl Libre', serif;
+    --main-background-color: #AA0E2D;
+    --side-background-color: #E2123C;
+    --button-background-color: #F0F0F0;
+    --link-font-color: #F5F5F5;
+    --text-font-color: #EBEBEB;
+}
+
+html {
+    background-color: var(--main-background-color);
+}
+
+/*
+* {
+    border: dashed 0.2px lightgreen;
+}
+*/
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px), (orientation: landscape) {
+    header {
+        overflow: hidden;
+    }
+
+    .register-navbar {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 12px;
+    }
+
+    .register-navbar a {
+        margin: 0;
+        padding: 0;
+        height: fit-content;
+    }
+
+    .register-navbar img {
+        margin: 0;
+        padding: 0;
+    }
+
+    .register-form {
+        padding: 18px 16px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 12px;
+        background-color: white;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    .register-section {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        row-gap: 8px;
+    }
+
+    .register-form__heading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+        font-family: var(--header-font-family);
+    }
+
+    .register-form__heading h1 {
+        font-size: 2rem;
+        margin: 0;
+    }
+
+    .register-form__heading p {
+        color: #757575;
+        margin: 0;
+    }
+
+    .register-section input {
+        width: 100%;
+        padding: 8px;
+        border-radius: 4px;
+        border: black 0.4px solid;
+
+    }
+
+    .register-section label {
+        font-weight: bolder;
+    }
+
+    .register-form__checkbox {
+        display: flex;
+        column-gap: 8px;
+    }
+
+    .register-form__checkbox p {
+        margin: 0 4px;
+    }
+
+    .register-form__checkbox a {
+        color: #757575;
+        text-decoration: underline;
+    }
+
+    .register-form__checkbox input {
+        align-self: flex-start;
+    }
+
+    #terms-and-conditionsError {
+        align-self: center;
+        justify-content: center;
+    }
+
+    #submit {
+        font-weight: 900;
+        font-size: 1.2rem;
+        font-family: var(--text-font-family);
+        background-color: var(--side-background-color);
+        color: white;
+    }
+
+    .register-form__login-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        column-gap: 8px;
+        text-align: center;
+        font-size: 0.8rem;
+    }
+
+    .register-form__login-link p, a {
+        margin: 0;
+    }
+
+    .register-form__login-link a {
+        color: var(--main-background-color);
+        font-weight: bold
+    }
+
+   footer {
+    overflow: hidden;
+   }
+
+    .footer-navigation {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 0 16px;
+    }
+
+    .footer-navigation ol {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        list-style-type: none;
+        padding: 0;
+        font-size: 0.8rem;
+    }
+
+    ol li::before {
+        content: " - ";
+        color: white;
+        font-weight: bold;
+        margin-left: 4px;
+    }
+
+    li {
+        margin: 0;
+        color: white;
+    } 
+    
+    /*Styling der Fehlermeldung*/
+    .validation_box, .error{
+        color: var(--main-background-color);
+        font-size: 0.7rem;
+    }
+
+/*Styling des Login-Forms*/
+    .login-document {
+        background-color: white;
+    }
+
+    header {
+        background-color: var(--main-background-color);
+        padding: 8px;
+        
+    }
+
+    .header--flex {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-weight: 900;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    main {
+        overflow: hidden;
+        padding: 8px;
+    }
+
+    .login-logo {
+        padding: 18px;
+        
+    }
+
+    .login-container__heading-section {
+        display: flex;
+        flex-direction: column;
+        row-gap: 8px;
+    }
+
+    .login-container__heading-section p, h1 {
+        margin: 0;
+        font-weight: bolder;
+        text-align: center;
+    }
+
+    .login-container__heading-section p a {
+        font-weight: bolder;
+        color: var(--main-background-color);
+    }
+
+    .login-container__divider {
+        font-size: 0.6rem;
+        font-weight: bolder;
+        display: flex;
+        align-items: center;
+        margin: 16px 0 16px 0;
+    }
+
+    .login-container__divider::before, .login-container__divider::after {
+         flex: 1;
+         content: '';
+         padding: 1px;
+         margin: 4px;
+         background-color: #CAC4D0;
+    }
+
+    /*Styling der Fehlermeldung beim Login*/
+    .error-user_not_found--close {
+        background-color: rgb(229, 192, 192);
+        color: var(--main-background-color);
+        font-weight: bold;
+        padding: 16px 8px;
+        border-radius: 12px;
+        display: none;
+        
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/style/reset.css">
+    <link rel="stylesheet" href="/style/auth.css">
+    <script src="/scripts/modules/validationRegister.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="register-navbar">
+            <a href="/">
+                <img src="/assets/images/WBB.svg" width="80" height="80">
+            </a>
+        </div>
+    </header>
+    <main>
+        <div class="register-form">
+            <form id="register" action="/auth/register" method="post">
+                <section class="register-form__heading register-section">
+                    <h1>Anmelden</h1>
+                    <p>Genieße die Möglichkeit deines Lebens</p>
+                </section>
+                <div class="error-user_not_found--close">
+                    Der Benutzer wurde nicht gefunden
+                </div>
+                <section class="register-section">
+                    <label for="username">Benutzername</label>
+                    <input type="text" name="username" id="username"  class/>
+                    <div class="validation_box" id="usernameError"></div>
+                </section>
+                <section class="register-section">
+                    <label for="email">E-Mail</label>
+                    <input type="email" name="email" id="email"  class/>
+                    <div class="validation_box" id="emailError"></div>
+                </section>
+                <section class="register-section">
+                    <label for="password">Passwort</label>
+                    <input type="password" name="password" id="password"   class/>
+                    <div class="validation_box" id="passwordError"></div>
+                </section>
+                <section class="register-section">
+                    <label for="confirm_password">Passwort bestätigen</label>
+                    <input type="password" name="confirm_password"  id="confirm_password"  class/>
+                    <div  class="validation_box" id="confirm_passwordError"></div>
+                </section>
+                <section class="register-form__checkbox">
+                    <input type="checkbox" id="terms-and-conditions" name="terms-and-conditions">
+                    <label for="terms-and-conditions"><p>I accept the terms</p>
+                    <p><a href="/">Read our T&C's</a></p></label>
+                    <div  class="validation_box" id="terms-and-conditionsError"></div>
+                </section>
+                <section class="register-section">
+                    <input type="submit" value="Konto erstellen" id="submit">
+                </section>
+                <section class="register-form__login-link">
+                    <p>Bereits ein Konto erstellt?</p><a href="/auth/Login">Zum Login</a>
+                </section>
+            </form>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-navigation">
+            <ol>
+                <lh style="color: white;">©2025 Bela Varga</lh>
+                <li><a href="/" target="_blank">Kontakt</a></li>
+                <li><a href="/" target="_blank">Privacy Policy</a></li>
+                <li><a href="/" target="_blank">Terms&Conditions</a></li>
+            </ol>
+        </div>
+    </footer>
+</body>
+</html>

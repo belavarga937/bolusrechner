@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turn Around Animation</title>
+    <style type="text/css">
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        * {
+            border: 0.2px darkcyan dashed;
+        }
+
+        .card-box {
+            border: solid;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin: 100px;
+            width: fit-content;
+            perspective: 1000px;
+        }
+
+        .card {
+            width: 50px;
+            height: 50px;
+            border: solid;
+            position: absolute;
+            transition: transform 0.9s ease-in-out;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+        } 
+        
+        .card-box__back-side {
+            transform: rotateY(180deg);
+        }
+
+        .card-box:hover .card-box__front-side{
+            transform: rotateY(180deg);
+        }
+
+        .card-box:hover .card-box__back-side {
+            transform: rotateY(0deg);
+        }
+
+       
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Turn Around Animation Test</h1>
+    </header>
+    <main>
+        <div class="boss" style="display: flex; justify-content: center; align-items: center; gap: 8px;">
+            <div class="card-box">
+                <div class="card-box__front-side card">Inhalt 1</div>
+                <div class="card-box__back-side card">Inhalt 2</div>
+            </div>
+            <div class="card-box">
+                <div class="card-box__front-side card">Inhalt 1</div>
+                <div class="card-box__back-side card">Inhalt 2</div>
+            </div>
+            <div class="card-box">
+                <div class="card-box__front-side card">Inhalt 1</div>
+                <div class="card-box__back-side card">Inhalt 2</div>
+            </div>
+        </div>
+       
+    </main>
+    <footer>
+        <p>&copy; 2023 Ihr Name</p>
+    </footer>
+</body>
+</html>

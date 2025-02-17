@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="de" class>
+    <head>
+        <title>Bolusrechner</title>
+        <meta charset="UTF-8" />
+        <meta name="description" content="Unser Bolusrechner ist das ultimative Online-Tool für Menschen mit Diabetes, um den Insulinbedarf präzise zu berechnen. Individuell anpassbar an Faktoren wie KE-Faktoren, Tageszeiten und Blutzuckerziele, hilft der Rechner, Ihre Insulindosis einfach und zuverlässig zu bestimmen. Zusätzlich bietet unsere Plattform eine umfangreiche Nährwertdatenbank, mit der Sie Kohlenhydrate, Kalorien und weitere Nährwerte von Lebensmitteln schnell analysieren können. Funktionen wie die Speicherung persönlicher Daten und Anpassungen machen die Verwaltung Ihres Diabetes einfacher und effizienter. Perfekt für Typ-1- und Typ-2-Diabetes geeignet. Optimieren Sie Ihr Diabetes-Management noch heute – mit unserem benutzerfreundlichen, flexiblen und modernen Bolusrechner!" />
+        <meta name="keywords" content="Bolusrechner, Insulinbedarf berechnen, Diabetes Rechner, Insulinberechnung, Diabetes Management, Nährwertanalyse, Kohlenhydrate berechnen, Typ-1-Diabetes, Typ-2-Diabetes, Blutzucker Rechner, Diabetiker Tools, Ernährung bei Diabetes, KE-Faktor Berechnung, Diabetiker App, Diabetes Online-Tools, Insulin Dosis berechnen, Blutzuckerziele, Diabetes Plattform, Nährwertdatenbank, Kohlenhydrate und Insulin, Insulinrechner" />
+        <meta name="author" content="Bela Varga" />
+        <meta name="copyright" content="Web By Bela Varga" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/style/reset.css" type="text/css"/>
+        <link rel="stylesheet" href="/style/style.css" type="text/css"/>
+        <script src="/scripts/modules/menu.js" defer></script>
+        <script src="/scripts/modules/bolusCalculatorFetch.js" defer></script>
+        <script src="/scripts/modules/bolusCalculator.js" defer></script>
+        <script src="/scripts/modules/maintainence.js" defer></script>
+    </head>
+<body class>
+    <header class>
+        <div class="navigation-bar__grid">
+            <div class="navigation-bar__logo">
+                <a href="/">
+                    <img src="/assets/images/WBB.svg" width="40" height="40">
+                </a>
+            </div>
+            <div class="navigation-bar__login-button--is-close button register-button" id="register-button" >
+                <a href="/auth/register">Registrieren</a>
+            </div>
+            <div class="navigation-bar__hamburger-menu">
+                <img class="navigation-bar__hamburger-menu--icon" id="hamburger-menu" src="/assets/images/icons/menu_24dp_000000_FILL1_wght700_GRAD200_opsz24.svg" alt="Navigations-Icon" />
+            </div>
+        </div>
+             <!--Versteckte Navigations-Bar-->
+             <nav class="navigation-bar__menu--is-close" id="navbar">
+                <div class="navigation-bar__menu__list">
+                    <ul>
+                        <a href="/">
+                            <li>
+                                <div class="navigation-bar__menu__navigation-link">
+                                    <img src="/assets/images/icons/info_24dp_000000_FILL1_wght700_GRAD200_opsz24.svg" alt="Navigation zur Startseite"/>
+                                    Home
+                                </div>
+                            </li>
+                        </a>
+                        <a href="/settings">
+                            <li>
+                                <div class="navigation-bar__menu__navigation-link">
+                                    <img src="/assets/images/icons/settings_heart_24dp_000000_FILL1_wght700_GRAD200_opsz24.svg" alt="Navigation zu den Einstellungen"/>
+                                    Einstellungen
+                                </div>
+                            </li>
+                        </a>
+                    </ul>
+                    <div class="auth-group">
+                        <div class="navigation-bar__menu__register-button auth-button">
+                            Registrieren
+                        </div>
+                        <div class="navigation-bar__menu__login-button auth-button">
+                            Anmelden
+                        </div>
+                    </div> 
+            </div>
+            </nav>
+        </div> 
+        
+        <div class="bolusrechner-sub-menu">
+            <h1 class="bolusrechner-sub-menu__heading heading">My Boluscalculator</h1>
+            <div class="error_no_login"></div> 
+            <div class="bolusrechner-sub-menu__sub-navigation-bar">
+                <div class="bolusrechner-sub-menu__sub-navigation-bar__nav-item button button-breakfast">
+                    <img class="nav-item-icon" src="/assets/images/meals/4.svg" alt="Frühstück-Mahlzeit" loading="lazy">
+                    <span>Früshtsück</span>
+                </div>
+                <div class="bolusrechner-sub-menu__sub-navigation-bar__nav-item button-lunch">
+                    <img class="nav-item-icon" src="/assets/images/meals/5.svg" alt="Mittagessen-Mahlzeit" loading="lazy">
+                    <span>Mittagessen</span>
+                </div>
+                <div class="bolusrechner-sub-menu__sub-navigation-bar__nav-item button-dinner">
+                    <img class="nav-item-icon" src="/assets/images/meals/6.svg" alt="Abendessen-Mahlzeit" loading="lazy">
+                    <span>Abendessen</span>
+                </div>
+                <div class="bolusrechner-sub-menu__sub-navigation-bar__nav-item button-night">
+                    <img class="nav-item-icon" src="/assets/images/meals/7.svg" alt="Nachts-Mahlzeit" loading="lazy">
+                    <span>Nachts</span>
+                </div>
+            </div>
+            
+    </header>
+    <main>
+        <div class="bolusrechner">
+            <div class="bolusrechner__header">
+                <h2>Berechne deinen Insulinbedarf</h2>
+            </div>
+            <div class="bolusrechner__sub-header">
+                <h2 class="bolusrechner__sub-header-selecting-time" id="selcting-time">Wähle eine Mahlzeit aus</h2>
+            </div>
+            <div class="bolusrechner__selecting-data">
+                <div class="bolusrechner__selecting-data-button">
+                    <div class="card--front-side">Zielblutzucker</div>
+                    <div class="card--back-side" id="zielblutzucker"></div>
+                </div>
+                <div class="bolusrechner__selecting-data-button">
+                    <div class="card--front-side">KE-Faktor</div>
+                    <div class="card--back-side" id="ke-faktor"></div>
+                </div>
+                <div class="bolusrechner__selecting-data-button">
+                    <div class="card--front-side">Korrekturfaktor</div>
+                    <div class="card--back-side" id="korrekturfaktor"></div>
+                </div>
+            </div>
+            <div class="bolusrechner__input-form">
+                <section class="bolusrechner__input-form-section"> 
+                    <div class="bolusrechner__input-form-input-group">
+                        <label for="ke">Kohlenhydrateinheiten</label>
+                        <input type="number" min="0" name="ke" id="ke" />
+                    </div>
+                </section>
+                <section class="bolusrechner__input-form-section">
+                        <div class="bolusrechner__input-form-input-group">
+                            <label for="blutzuckerwert">Blutzuckerwert</label>
+                            <input type="number" min="0" name="blutzuckerwert" id="blutzuckerwert" />
+                        </div>
+                </section>
+                <section class="bolusrechner__input-form-section">
+                    <div class="bolusrechner__input-form-showing-result">
+                        <h3>Benötigter Insulinbedarf: <span id="showing-result-bolusrechner">0</span> IE</h3>
+                    </div>
+                </section>
+                <section class="bolusrechner__input-form-section">
+                    <div class="bolusrechner__input-form-save-button">
+                        <img src="/assets/images/icons/check_24dp_000000_FILL1_wght700_GRAD200_opsz24.svg" alt="Icon für die Speicherung">
+                        <p>Speichern</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+        
+    </main>
+    <footer>
+
+    </footer>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bolus Calculator Test</title>
+    <script src="../scripts/modules/bolusCalculator.js" defer></script>
+</head>
+<body>
+    <h1>Bolus Calculator Test</h1>
+    <div class="bolusrechner">
+        <div class="bolusrechner__header">
+            <h2>Berechne deinen Insulinbedarf</h2>
+        </div>
+        <div class="bolusrechner__sub-header">
+            <h2 class="bolusrechner__sub-header-selecting-time" id="selcting-time">Frühstück</h2>
+        </div>
+        <div class="bolusrechner__selecting-data">
+            <div class="bolusrechner__selecting-data-button">
+                <div class="card--front-side">Zielblutzucker</div>
+                <div class="card--back-side" id="zielblutzucker">120</div>
+            </div>
+            <div class="bolusrechner__selecting-data-button">
+                <div class="card--front-side">KE-Faktor</div>
+                <div class="card--back-side" id="ke-faktor">1.7</div>
+            </div>
+            <div class="bolusrechner__selecting-data-button">
+                <div class="card--front-side">Korrekturfaktor</div>
+                <div class="card--back-side" id="korrekturfaktor">50</div>
+            </div>
+        </div>
+        <div class="bolusrechner__input-form">
+            <section class="bolusrechner__input-form-section"> 
+                <div class="bolusrechner__input-form-input-group">
+                    <label for="ke">Kohlenhydrateinheiten</label>
+                    <input type="text" name="ke" id="ke" />
+                </div>
+            </section>
+            <section class="bolusrechner__input-form-section">
+                    <div class="bolusrechner__input-form-input-group">
+                        <label for="blutzuckerwert">Blutzuckerwert</label>
+                        <input type="text" name="blutzuckerwert" id="blutzuckerwert" />
+                    </div>
+            </section>
+            <section class="bolusrechner__input-form-section">
+                <div class="bolusrechner__input-form-showing-result">
+                    <h3>Benötigter Insulinbedarf: <span id="showing-result-bolusrechner">0</span> IE</h3>
+                </div>
+            </section>
+            <section class="bolusrechner__input-form-section">
+                <div class="bolusrechner__input-form-save-button">
+                    <img src="../public/assets/images/icons/check_24dp_000000_FILL1_wght700_GRAD200_opsz24.svg" alt="Icon für die Speicherung">
+                    <p>Speichern</p>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+@font-face {
+    font-family: 'Archivo Black';
+    src: url('./font_styles/Archivo_Black/ArchivoBlack-Regular.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Frank Ruhl Libre';
+    src: url('./font_styles/Frank_Ruhl_Libre/FrankRuhlLibre-VariableFont_wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Libre Baskerville', serif;
+    src: url("./font_styles/Libre_Baskerville/LibreBaskerville-Bold.ttf");
+    font-weight: bolder;
+    font-style: normal;
+}

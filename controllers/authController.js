@@ -91,7 +91,7 @@ exports.loginUser = async (req, res) => {
 
             //JSON Web Token generieren
             const token = jwt.sign({email: existingUser.email, _id: existingUser._id}, process.env.JWT_TOKEN, {
-                expiresIn: '3h'
+                expiresIn: '7d'
             });
             
             //Token als HTTP-Only-Cookie senden

@@ -2,7 +2,7 @@
 const path = require('path');
 const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const { User } = require('../database')
+const {User} = require('../database');
 const { validationResult } = require('express-validator');
 const bodyParser = require('body-parser');
 const { error } = require('console');
@@ -12,13 +12,15 @@ require('dotenv').config();
 //Registrieren
 exports.getRegisterPage = (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'view', 'register.html'));
-};
+    };
 
 exports.registerUser = async (req, res) => {
+    console.log("🔍 Starte Registrierung...");
 
     //Validation Ergebnis
     const errors = validationResult(req);
         if(!errors.isEmpty()) {
+            console.log("Validierungsfehler:", errors.array()); 
             return res.status(400).json({ errors: errors.array() });
         }
 
@@ -28,6 +30,7 @@ exports.registerUser = async (req, res) => {
         //Nachschauen, ob User bereits vorhanden ist
         const isExisting = await User.findOne({email: email});
         if (isExisting) {
+            console.log("Die E-Mail ist bereis vorhanden");
             return res.status(404).json({ error: 'Die E-Mail ist bereits vorhanden' });
         }
 
@@ -46,17 +49,16 @@ exports.registerUser = async (req, res) => {
         //User speichern
         await newUser.save();
         console.log('Der Nutzer wurde erfolgreich gespeichert');
-
         res.status(201).json({ message: 'Registrierung erfolgreich!' });
     }
 
     catch (err) {
         console.error(err);
-        res.status(500).json({ error: err.message });
+        res.status(500).json({ error: err + "Hallo" });
     
     }
 
-}
+};
 
 //Anmelden
 exports.getLoginPage = (req, res) => {

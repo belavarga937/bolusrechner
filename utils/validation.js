@@ -1,6 +1,6 @@
 //Funktionen zur Validierung der Daten
 const { body, param, validationResult } = require('express-validator');
-const User = require('../database');
+const { User } = require('../database');
 
     //Register
 const validationRegister = [

@@ -99,7 +99,7 @@ registerForm.addEventListener('submit', async (e) => {
             }
         }
         catch (error) {
-            console.error('Fehler:', error);
+            console.error('Fehler: ' + error);
             alert('Serverfehler. Bitte später erneut versuchen.');
         }
     }
